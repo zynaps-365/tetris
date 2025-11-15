@@ -1,4 +1,4 @@
-package main
+package tetris
 
 import (
 	"image/color"
@@ -32,13 +32,13 @@ func (m *MainMenu) Draw(screen *ebiten.Image) {
 	dx := bounds.Dx() / 2
 	dy := bounds.Dy()
 
+	m.tl.Draw(screen, "TETRIS", dx, dy/2)
 	m.ft.Draw(screen, "Press SPACE to start", dx, dy-dy/10)
-	m.tl.Draw(screen, gameName, dx, dy/2)
 }
 func (m *MainMenu) Update() error {
 	m.ft.Tick()
 	if ebiten.IsKeyPressed(ebiten.KeySpace) {
-		m.sc.switchGameBoard()
+		m.sc.SwitchGameBoard()
 	}
 
 	return nil

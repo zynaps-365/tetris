@@ -3,21 +3,23 @@ package main
 import (
 	"image"
 
+	"tetris/internal/tetris"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 const (
-	gameName     = "Tetris"
+	GameName     = "Tetris"
 	ScreenWidth  = 480
 	ScreenHeight = 640
 )
 
 func main() {
 	ebiten.SetWindowSize(ScreenWidth, ScreenHeight)
-	ebiten.SetWindowTitle(gameName)
+	ebiten.SetWindowTitle(GameName)
 
-	img, _, err := ebitenutil.NewImageFromFile("tetris.png")
+	img, _, err := ebitenutil.NewImageFromFile("resources/tetris.png")
 	if err != nil {
 		panic(err)
 	}
@@ -25,9 +27,14 @@ func main() {
 	imgs := []image.Image{img}
 	ebiten.SetWindowIcon(imgs)
 
-	sm := NewSceneManager()
-	sm.switchToMainMenu()
-	g := &Game{sceneManager: sm}
+	sm := tetris.NewSceneManager()
+	sm.SwitchToMainMenu()
+	g := &tetris.Game{
+		SceneManager: sm,
+		ScreenWidth:  ScreenWidth,
+		ScreenHeight: ScreenHeight,
+		GameName:     GameName,
+	}
 
 	if err := ebiten.RunGame(g); err != nil {
 		panic(err)

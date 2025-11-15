@@ -1,4 +1,4 @@
-package main
+package tetris
 
 var (
 	moveLeft  = MoveOffset{-1, 0}
