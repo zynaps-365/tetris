@@ -1,4 +1,4 @@
-package main
+package tetris
 
 import "github.com/hajimehoshi/ebiten/v2"
 
@@ -21,11 +21,11 @@ func (sc *SceneManager) Update() error {
 	return sc.active.Update()
 }
 
-func (sc *SceneManager) switchToMainMenu() {
+func (sc *SceneManager) SwitchToMainMenu() {
 	sc.active = sc.mainMenu
 }
 
-func (sc *SceneManager) switchGameBoard() {
+func (sc *SceneManager) SwitchGameBoard() {
 	sc.active = sc.board
 }
 
