@@ -3,10 +3,9 @@ package main
 import (
 	"image"
 
-	"tetris/internal/tetris"
-
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/zynaps-365/tetris/internal/tetris"
 )
 
 const (
