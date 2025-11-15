@@ -1,4 +1,3 @@
 TETRIS
 ---
-
-Created just 4 fun
+It is a Go and ebiten engine implementation of Tetris Game.
