@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	_ "embed"
 	"image"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -14,17 +16,22 @@ const (
 	ScreenHeight = 640
 )
 
+var (
+	//go:embed tetris.png
+	tetrisPng []byte
+)
+
 func main() {
 	ebiten.SetWindowSize(ScreenWidth, ScreenHeight)
 	ebiten.SetWindowTitle(GameName)
 
-	img, _, err := ebitenutil.NewImageFromFile("resources/tetris.png")
+	icon, _, err := ebitenutil.NewImageFromReader(bytes.NewReader(tetrisPng))
 	if err != nil {
 		panic(err)
 	}
 
-	imgs := []image.Image{img}
-	ebiten.SetWindowIcon(imgs)
+	icons := []image.Image{icon}
+	ebiten.SetWindowIcon(icons)
 
 	sm := tetris.NewSceneManager()
 	sm.SwitchToMainMenu()
